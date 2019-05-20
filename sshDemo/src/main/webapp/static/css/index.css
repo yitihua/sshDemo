@@ -1,0 +1,45 @@
+@charset "utf-8";
+body,div,img,a,ul,ol,p,td{
+	margin:0;
+    padding:0;
+
+}
+ul{
+	list-style:none;
+}
+body{
+    font-size:12px;
+}
+a{
+	color:#000;
+	text-decoration:none;
+}
+.container{
+    width: 100%;
+    padding:50px 0 0 300px;
+}
+td{
+    border-right: 1px peru solid;
+    border-bottom: 1px peru solid;
+    width: 125px;
+}
+table{
+    border-left:  1px peru solid;
+    border-top:  1px peru solid;
+}
+.btn-red{
+    width:50px;
+    height: 20px;
+    border-radius: 4px;
+    border:1px tomato solid;
+    color: white;
+    background:tomato;
+}
+.btn-white{
+    width:50px;
+    height: 20px;
+    border-radius: 4px;
+    border:1px tomato solid;
+    color: tomato;
+    background: #fff;
+}
