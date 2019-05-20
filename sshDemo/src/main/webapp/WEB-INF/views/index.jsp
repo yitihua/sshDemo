@@ -22,6 +22,7 @@
                 <td colspan="5">
                     <input type="button" value="删除" id="delectall" class="btn-red">
                     <input type="button" value="全选" id="selectall" class="btn-white">
+                    <input type="button" value="新增" id ="add" class="btn-white" style="float: right">
                 </td>
             </tr>
             <%--列表名：dictList
