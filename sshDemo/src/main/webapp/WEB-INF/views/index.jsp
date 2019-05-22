@@ -34,7 +34,7 @@
                     <%--<td>--%>
                         <%--<input type="checkbox" value="signldict" class="checkbox">--%>
                     <%--</td>--%>
-                    <%--<td class="sort" name = "${dict.sort}"></td>--%>
+                    <%--<td>${dict.sort}</td>--%>
                     <td>${dict.name}</td>
                     <td>${dict.status}</td>
                     <td>${dict.code}</td>
@@ -101,12 +101,6 @@
             window.location.href="${ctx}"+"/dict/update/"+name
 
         }
-    }
-    //sort处理
-    var sort = document.getElementsByClassName("sort")
-    for(let i = 0;i<sort.length;i++){
-        let name = sort[i].getAttribute("name")
-        sort[i].innerHTML = name.splice(-1,2)
     }
 </script>
 </body>

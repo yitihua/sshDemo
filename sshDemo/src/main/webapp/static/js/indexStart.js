@@ -11,7 +11,8 @@ function GetUrlRelativePath()
     }
     return relUrl;
 }
-var ctx = GetUrlRelativePath();
+const ctx = GetUrlRelativePath();
+
 //用一个json形式的data变量储存你要传输的数据
 var data ={
     name: "buza",
@@ -34,13 +35,16 @@ for(let i = 0,l = delBtns.length;i<l;i++){
         let xhr = new XMLHttpRequest()
         //post方法如下
         //删除操作的地址↓↓↓↓
-        xhr.open("post", "http://localhost:8080?", true)
+        console.log(ctx+"/dict/delete/"+newsid)
+        xhr.open("post", ctx+"/dict/delete/"+newsid, true)
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
         xhr.send(newsid)
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
                     console.log("sussees")
+                }else {
+                    console.log("no!!")
                 }
             }
         }
@@ -66,15 +70,15 @@ for(let i = 0,l = editBtns.length;i<l;i++){
         }
     }
 }
+
 //新增项
 var addBtn = document.getElementById("add")
-
 addBtn.onclick = function addNews(){
     let xhr =new XMLHttpRequest()
     //get方法如下
-                        //增加操作的地址↓↓↓↓
-       xhr.open("get","http://localhost:8080?"+join(data),true)
-       xhr.send()
+    //增加操作的地址↓↓↓↓
+    xhr.open("get","http://localhost:8080?"+join(data),true)
+    xhr.send()
        xhr.onreadystatechange = function(){
             if(xhr.readyState === 4){
                 if(xhr.status>=200 && xhr.status<300 || xhr.status===304){
