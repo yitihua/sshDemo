@@ -10,6 +10,7 @@
     <title>首页</title>
     <link rel="stylesheet" href="${ctx}/static/css/index.css"/>
     <script src="${ctx}/static/js/indexStart.js" ></script>
+
 </head>
 <body>
 <div class="container">
@@ -20,25 +21,26 @@
             <tr><td colspan="5">数据字典表</td></tr>
             <tr>
                 <td colspan="5">
-                    <input type="button" value="删除" id="delectall" class="btn-red">
-                    <input type="button" value="全选" id="selectall" class="btn-white">
+                   <%-- <input type="button" value="删除" id="delectall" class="btn-red">--%>
+                    <%--<input type="button" value="全选" id="selectall" class="btn-white">--%>
                     <input type="button" value="新增" id ="add" class="btn-white" style="float: right">
                 </td>
             </tr>
             <%--列表名：dictList
                 遍历数组名：dict
             --%>
-            <c:forEach var="dict" items="${dictList}" varStatus="thedict">
+            <c:forEach var="dict" items="${dictList}">
                 <tr>
+                    <%--<td>--%>
+                        <%--<input type="checkbox" value="signldict" class="checkbox">--%>
+                    <%--</td>--%>
+                    <%--<td class="sort" name = "${dict.sort}"></td>--%>
+                    <td>${dict.name}</td>
+                    <td>${dict.status}</td>
+                    <td>${dict.code}</td>
                     <td>
-                        <input type="checkbox" value="signldict" class="checkbox">
-                    </td>
-                    <td>${thedict.name}</td>
-                    <td>${thedict.status}</td>
-                    <td>${thedict.code}</td>
-                    <td>
-                        <input type="button" value="delect" class="delect" flag = ${thedic.id}>
-                        <input type="button" value="edit" class="edit" flag = ${thedic.id}>
+                        <input type="button" value="delete" class="delete" name="${dict.id}">
+                        <input type="button" value="edit" class="edit" name="${dict.id}">
                     </td>
                 </tr>
             </c:forEach>
@@ -57,8 +59,8 @@
         </table>
     </div>
 
-
 <script>
+    if("${message}"){alert("message"+"${message}")}
     <%--全选功能--%>
     var selFlag = true;
     var selAllBtn = document.querySelector("#selectall")
@@ -79,7 +81,33 @@
             }
         }
     }
+    var addBtn = document.getElementById("add")
+    add.onclick = function(){
+        window.location.href=' dict'
+    }
+//    删除单个文件
+    var delBtns = document.getElementsByClassName("delete")
+    for(let i = 0;i<delBtns.length;i++){
+        delBtns[i].onclick = function () {
+            let name = this.getAttribute("name")
+            window.location.href="${ctx}"+"/dict/delete/"+name
 
+        }
+    }
+    var editBtns = document.getElementsByClassName("edit")
+    for(let i = 0;i<editBtns.length;i++){
+        delBtns[i].onclick = function () {
+            let name = this.getAttribute("name")
+            window.location.href="${ctx}"+"/dict/update/"+name
+
+        }
+    }
+    //sort处理
+    var sort = document.getElementsByClassName("sort")
+    for(let i = 0;i<sort.length;i++){
+        let name = sort[i].getAttribute("name")
+        sort[i].innerHTML = name.splice(-1,2)
+    }
 </script>
 </body>
 </html>
